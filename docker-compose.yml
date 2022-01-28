@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+
+  postgres:
+    image: ${POSTGRES_IMAGE:-postgres:12-alpine}
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+      - POSTGRES_DB=demo
+    volumes:
+      - postgres-data-demo:/var/lib/postgresql/data
+
+volumes:
+  postgres-data-demo:

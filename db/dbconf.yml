@@ -1,0 +1,19 @@
+#If you setup postgres outside of the one specified in docker-compose.yml,
+#create database notification;
+#create user notification;
+#GRANT ALL PRIVILEGES ON DATABASE "notification" to notification;
+#Below command allows the user to make this call: create extension if not exists "uuid-ossp";
+#ALTER USER notification WITH SUPERUSER;
+development:
+  driver: postgres
+  open: user=demo dbname=demo sslmode=disable password=demo port=5433
+  table: goose_api_demo
+
+cicd:
+  driver: postgres
+  open: user=demo dbname=demo host=demo password=demo
+
+local:
+  driver: postgres
+  open: user=demo dbname=demo sslmode=disable password=demo port=5433
+  table: goose_api_demo
